@@ -1,1 +1,5 @@
-TestGuru.version = '0.1.0'
+class TestGuru
+  def version
+    puts "0.1.0"
+  end
+end
