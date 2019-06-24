@@ -1,6 +1,10 @@
 class Test < ApplicationRecord
 
-  def self.find_by_category(category)
-    Test.where(category_id: category).order(title: :desc)
+  def find_by_category(category)
+    SELECT
+    tests.category_id,
+    categories.title
+    FROM categories
+    INNER JOIN categories ON tests.category_id
   end
 end
