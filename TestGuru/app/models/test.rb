@@ -5,10 +5,14 @@ class Test < ApplicationRecord
   has_many :users, through: :passed_tests
   has_many :questions
 
-  def find_by_category(category)
-  Test.joins('JOIN categories ON categories.id = tests.category_id').
-  where(categories: { title: category }).
-  order(title: :desc).
-  pluck(:title)
-  end
+  validates :title, presence :true
+                    uniqueness :true
+  validates :level, numercality :true { only_integer :true}
+                    uniqueness :true
+
+  scope :level, -> (level) { where(level: level) }
+  scope :easy, -> { level(0, 1) }
+  scope :medium, -> { level(2, 3, 4) }
+  scope :hard, -> { level(5..Float::INFINITY) }
+  scope :by_category, -> (category) { joins(:category).where(categories: { title: category }) }
 end
