@@ -5,9 +5,8 @@ class Test < ApplicationRecord
   has_many :users, through: :passed_tests
   has_many :questions
 
-  validates :title, presence :true
-                    uniqueness :true
-  validates :level, numercality :true { only_integer :true}
+  validates :title, :level,
+                    presence :true
                     uniqueness :true
 
   scope :level, -> (level) { where(level: level) }
@@ -15,4 +14,8 @@ class Test < ApplicationRecord
   scope :medium, -> { level(2, 3, 4) }
   scope :hard, -> { level(5..Float::INFINITY) }
   scope :by_category, -> (category) { joins(:category).where(categories: { title: category }) }
+
+  def find_by_category(category)
+    scope :by_category
+  end
 end
