@@ -5,9 +5,7 @@ class Test < ApplicationRecord
   has_many :users, through: :passed_tests
   has_many :questions
 
-  validates :title, :level,
-                    presence :true
-                    uniqueness :true
+  validates :title, presence: true, uniqueness: { scope: :level }
 
   scope :level, -> (level) { where(level: level) }
   scope :easy, -> { level(0, 1) }
@@ -16,6 +14,6 @@ class Test < ApplicationRecord
   scope :by_category, -> (category) { joins(:category).where(categories: { title: category }) }
 
   def find_by_category(category)
-    scope :by_category
+    by_category(category).order(title: :desc).pluck(:title)
   end
 end

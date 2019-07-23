@@ -1,0 +1,2 @@
+class ChangeTest < ApplicationRecord
+end
