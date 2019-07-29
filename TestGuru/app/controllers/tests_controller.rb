@@ -2,10 +2,15 @@ class TestsController < ApplicationController
   before_action :find_test, except: :index
 
   def index
-    render plain: "All tests: #{Test.count}"
+    @tests = Test.all
+  end
+
+  def new
+    @test = Test.new
   end
 
   def show
+
   end
 
   private

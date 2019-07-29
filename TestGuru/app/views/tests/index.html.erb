@@ -1,0 +1,9 @@
+<% @tests.each do |test| %>
+<p>
+<%= test.title %>
+ <% test.questions.each do |question|  %>
+   <%= question.question %>
+  <% end %>
+ <br>
+ </p>
+<% end %>

@@ -25,6 +25,9 @@ class QuestionsController < ApplicationController
     render plain: resalt.join("/n")
   end
 
+  def delete
+  end
+
   private
 
   def question_params
