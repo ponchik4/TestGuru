@@ -17,7 +17,7 @@ class QuestionsController < ApplicationController
 
   def create
     question = @test.questions.new(question_params)
-    if question
+    if question.save
       render plain: 'Questions was create'
     else
       redirect_to "/404.html"
