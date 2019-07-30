@@ -37,7 +37,7 @@ class QuestionsController < ApplicationController
   private
 
   def question_params
-    params.require(:body).permit(:body)
+    params.require(:question).permit(:body)
   end
 
   def rescue_with_question_not_found
