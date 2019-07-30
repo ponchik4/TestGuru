@@ -15,9 +15,12 @@ class QuestionsController < ApplicationController
   end
 
   def create
-    question = Question.create(question_params)
-    render plain: question.inspect
-    question.save!
+    question = @test.questions.new(questions_params)
+    if question.save
+      render plain: 'Questions was create'
+    else
+      redirect_to "/404.html"
+    end
   end
 
   def search
@@ -25,7 +28,9 @@ class QuestionsController < ApplicationController
     render plain: resalt.join("/n")
   end
 
-  def delete
+  def destroy
+    @question.destroy
+    render plain: "Question was deleted"
   end
 
   private
@@ -35,7 +40,7 @@ class QuestionsController < ApplicationController
   end
 
   def rescue_with_question_not_found
-    render plain: 'question was not found'
+    render plain: '404: question was not found'
   end
 
   def find_question
