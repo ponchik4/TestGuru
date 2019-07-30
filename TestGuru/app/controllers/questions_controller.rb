@@ -1,5 +1,6 @@
 class QuestionsController < ApplicationController
   before_action :find_question, only: [:show, :edit]
+  before_action :find_test, only: [:create, :new]
 
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_question_not_found
 
@@ -45,5 +46,9 @@ class QuestionsController < ApplicationController
 
   def find_question
     @question = Question.find(params[:id])
+  end
+
+  def find_test
+    @test = Test.find(params[:test_id])
   end
 end
