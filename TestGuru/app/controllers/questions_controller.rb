@@ -16,8 +16,8 @@ class QuestionsController < ApplicationController
   end
 
   def create
-    question = @test.questions.new(questions_params)
-    if question.save
+    question = @test.questions.new(question_params)
+    if question
       render plain: 'Questions was create'
     else
       redirect_to "/404.html"
@@ -37,7 +37,7 @@ class QuestionsController < ApplicationController
   private
 
   def question_params
-    params.require(:question).permit(:title, :question)
+    params.require(:body).permit(:body)
   end
 
   def rescue_with_question_not_found

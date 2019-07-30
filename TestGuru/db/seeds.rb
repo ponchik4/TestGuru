@@ -7,8 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 categories = Category.create([{ title: 'Ruby' }, { title: 'Rails' }, { title: 'HTML' }])
-test = Test.create(title: 'Test first', category_id: categories.first.id)
-user = User.create(name: 'Po')
+test = Test.create([{ title: 'Test first'}, { category_id: categories.first.id }])
+user = User.create([{name: 'Po' }])
 question = Questions.create(title: 'Help me', question: 'How can I do this homework?')
 answer = Answer.create(answer: 'nowhere', question_id: question.id)
 pass_test = PassedTest.create(user_id: user.id, test_id: test.id)
