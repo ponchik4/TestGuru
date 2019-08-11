@@ -1,5 +1,5 @@
 class TestsController < ApplicationController
-  before_action :find_test, except: :index
+  before_action :find_test,  only: [:show, :edit]
 
   def index
     @tests = Test.all
@@ -7,6 +7,16 @@ class TestsController < ApplicationController
 
   def new
     @test = Test.new
+  end
+
+  def create
+    @test = Test.new(test_params)
+    @test.user_id = 1
+      if @test.save!
+        render plain: 'Test was create'
+      else
+        redirect_to "/404.html"
+      end
   end
 
   def show
@@ -19,4 +29,7 @@ class TestsController < ApplicationController
     @test = Test.find(params[:id])
   end
 
+  def test_params
+    params.require(:test).permit(:title, :category_id, :level)
+  end
 end
