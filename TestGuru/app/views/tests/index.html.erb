@@ -1,6 +1,10 @@
+<p>
+  <%= link_to 'New test', new_test_path %>
+</p>
 <% @tests.each do |test| %>
 <p>
 <%= test.title %>
+<%= test.questions.count %>
  <% test.questions.each do |question|  %>
    <%= question.body %>
   <% end %>

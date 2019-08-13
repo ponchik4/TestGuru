@@ -16,12 +16,12 @@ class QuestionsController < ApplicationController
   end
 
   def create
-    question = @test.questions.new(question_params)
-    if question.save
-      render plain: 'Questions was create'
-    else
-      redirect_to "/404.html"
-    end
+    question = @test.questions.new(questions_params)
+  	    if question.save
+  	      render plain: 'Questions was create'
+  	    else
+  	      redirect_to "/404.html"
+  	    end
   end
 
   def search
