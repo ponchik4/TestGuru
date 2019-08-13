@@ -4,6 +4,7 @@
 <% @tests.each do |test| %>
 <p>
 <%= test.title %>
+<%= test.questions.count %>
  <% test.questions.each do |question|  %>
    <%= question.body %>
   <% end %>
