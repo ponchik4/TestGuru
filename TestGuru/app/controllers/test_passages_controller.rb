@@ -1,5 +1,5 @@
 class TestPassagesController < ApplicationController
-  before_action :set_test_passage, only: [:show, :edit, :update, :destroy]
+  before_action :set_test_passage, only: [:show, :edit, :update, :destroy, :result]
 
   # GET /test_passages
   # GET /test_passages.json
@@ -10,6 +10,9 @@ class TestPassagesController < ApplicationController
   # GET /test_passages/1
   # GET /test_passages/1.json
   def show
+  end
+
+  def result
   end
 
   # GET /test_passages/new
@@ -40,14 +43,12 @@ class TestPassagesController < ApplicationController
   # PATCH/PUT /test_passages/1
   # PATCH/PUT /test_passages/1.json
   def update
-    respond_to do |format|
-      if @test_passage.update(test_passage_params)
-        format.html { redirect_to @test_passage, notice: 'Test passage was successfully updated.' }
-        format.json { render :show, status: :ok, location: @test_passage }
-      else
-        format.html { render :edit }
-        format.json { render json: @test_passage.errors, status: :unprocessable_entity }
-      end
+    @test_passage.accept!(params[:answer_ids])
+
+    if @test_passage.completed?
+      redirect_to result_test_passage_path(@test_passage)
+    else
+      render :show
     end
   end
 

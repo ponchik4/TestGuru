@@ -1,5 +1,5 @@
 class Answer < ApplicationRecord
-  belongs_to :questions
+  belongs_to :question
 
   validate :validate_max_answers
 
@@ -8,6 +8,6 @@ class Answer < ApplicationRecord
   private
 
   def validate_max_answers
-    errors.add(:question) if question.answers.answers_id > 4
+    errors.add(:question) if question.answers.count > 4
   end
 end
