@@ -10,6 +10,6 @@
       <%= b.label %>
   <% end %>
    </p>
-  <p><%= form.submit 'Next' %></p>
+  <p><%= form.submit 'Next', @test_passage.next_question %></p>
   <p><%= @test_passage.current_question_id %> / <%= @test_passage.test.questions.count %> </p>
 <% end %>
