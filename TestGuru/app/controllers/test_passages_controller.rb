@@ -1,20 +1,6 @@
 class TestPassagesController < ApplicationController
   before_action :set_test_passage, only: [:show, :edit, :update, :destroy, :result]
 
-  SUCCESS_RATE = 85
-
-  def completed?
-    current_question.nil?
-  end
-
-  def percent_of_complition
-    (correct_questions.to_f / test.questions.count * 100).round 2
-  end
-
-  def success_test?
-    percent_of_complition > SUCCESS_RATE
-  end
-
   # GET /test_passages
   # GET /test_passages.json
   def index

@@ -8,8 +8,22 @@ class TestPassage < ApplicationRecord
   before_create :set_first_question
   before_update :set_next_question
 
+  SUCCESS_RATE = 85
+
   def completed?
     current_question.nil?
+  end
+
+  def success_test?
+    percent_of_complition > SUCCESS_RATE
+  end
+
+  def completed?
+    current_question.nil?
+  end
+
+  def percent_of_complition
+    (correct_questions.to_f / test.questions.count * 100).round 2
   end
 
   def accept!(answer_ids)
