@@ -15,7 +15,7 @@ class TestPassage < ApplicationRecord
   end
 
   def completed?
-    self.test.current_question.nil?
+    self.current_question.nil?
   end
 
   def percent_of_complition
@@ -26,8 +26,6 @@ class TestPassage < ApplicationRecord
     if correct_answer?(answer_ids)
       self.correct_questions += 1
     end
-
-    self.current_question = next_question
     save!
   end
 
