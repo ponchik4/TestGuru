@@ -32,10 +32,8 @@ class TestPassagesController < ApplicationController
     respond_to do |format|
       if @test_passage.save
         format.html { redirect_to @test_passage, notice: 'Test passage was successfully created.' }
-        format.json { render :show, status: :created, location: @test_passage }
       else
         format.html { render :new }
-        format.json { render json: @test_passage.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -44,7 +42,7 @@ class TestPassagesController < ApplicationController
   # PATCH/PUT /test_passages/1.json
   def update
     @test_passage.accept!(params[:answer_ids])
-
+    
     if @test_passage.completed?
       redirect_to result_test_passage_path(@test_passage)
     else
