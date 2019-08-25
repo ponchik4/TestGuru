@@ -1,2 +1,8 @@
-<h1>Happy end</h1>
-<%= self.test_result(@test_passage) %>
+<h1>
+  <font color=<%= color(@test_passage) %>>
+    <%= test_result(@test_passage) %>
+    Done: <%= @test_passage.percent_of_complition.to_i %>%
+  </font>
+</h1>
+<br>
+<%= link_to 'Try again', tests_path  %>

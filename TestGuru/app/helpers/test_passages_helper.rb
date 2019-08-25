@@ -1,17 +1,17 @@
 module TestPassagesHelper
-  def test_result(test_passage)
+  def color(test_passage)
    if test_passage.success_test?
-     puts 'test_success'
+      'green'
    else
-     puts 'test_failed'
+      'red'
    end
- end
+  end
 
- def color(test_passage)
+ def test_result(test_passage)
    if test_passage.success_test?
-     'block_green'
+     'Test success'
    else
-     'block_red'
+     'Test faild!'
    end
  end
 end
