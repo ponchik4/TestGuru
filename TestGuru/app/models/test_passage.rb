@@ -1,6 +1,7 @@
 class TestPassage < ApplicationRecord
   belongs_to :user
   belongs_to :test
+  belongs_to :current_question, class_name: 'Question', optional: true
 
   before_validation :before_validation_set_first_question, on: :create
 
@@ -14,7 +15,7 @@ class TestPassage < ApplicationRecord
   end
 
   def completed?
-    self.test.current_question_id.nil?
+    self.test.current_question.nil?
   end
 
   def percent_of_complition
@@ -23,10 +24,10 @@ class TestPassage < ApplicationRecord
 
   def accept!(answer_ids)
     if correct_answer?(answer_ids)
-      self.correct_questions_id += 1
+      self.correct_questions += 1
     end
 
-    self.test.current_question_id = next_question
+    self.current_question = next_question
     save!
   end
 
@@ -35,21 +36,21 @@ class TestPassage < ApplicationRecord
   end
 
   def set_first_question
-    self.test.current_question_id = test.questions.first
+    self.current_question = test.questions.first
   end
 
   def set_next_question
-    self.test.current_question_id = next_question
+    self.current_question = next_question
   end
 
   private
 
   def before_validation_set_first_question
-    self.test.current_question_id = test.questions.first if test.present?
+    self.current_question = test.questions.first if test.present?
   end
 
   def correct_answers
-    self.test.current_question_id.answers.correct
+    self.current_question.answers.correct
   end
 
   def correct_answer?(answer_ids)
