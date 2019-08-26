@@ -1,0 +1,10 @@
+<h1>
+    <% if @test_passage.success_test? %>
+     <font color = "green"> Test success! </font>
+    <% else %>
+     <font color = "red"> Test faild! </font>
+    <% end %>
+    Done: <%= @test_passage.percent_of_complition.to_i %>%
+</h1>
+<br>
+<%= link_to 'Try again', tests_path  %>

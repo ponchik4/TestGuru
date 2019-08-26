@@ -10,5 +10,5 @@ categories = Category.create([{ title: 'Ruby' }, { title: 'Rails' }, { title: 'H
 test = Test.create([{ title: 'Test first'}, { category_id: categories.first.id }])
 user = User.create([{name: 'Po' }])
 question = Questions.create(title: 'Help me', question: 'How can I do this homework?')
-answer = Answer.create(answer: 'nowhere', question_id: question.id)
+answer = Answer.create(body: 'nowhere', question_id: question.id, correct: false)
 pass_test = PassedTest.create(user_id: user.id, test_id: test.id)
