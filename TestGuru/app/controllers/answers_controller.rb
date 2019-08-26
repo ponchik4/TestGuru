@@ -4,7 +4,7 @@ class AnswersController < ApplicationController
   # GET /answers
   # GET /answers.json
   def index
-    @answers = Answer.all
+    @answers = @question.answers.all
   end
 
   # GET /answers/1
@@ -24,7 +24,7 @@ class AnswersController < ApplicationController
   # POST /answers
   # POST /answers.json
   def create
-    @answer = Answer.new(answer_params)
+    @answer = @question.answers.new(answer_params)
 
     respond_to do |format|
       if @answer.save
@@ -69,7 +69,6 @@ class AnswersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def answer_params
-      params.require(:answer).permit(:body)
-      params.require(:answer).permit(:correct)
+      params.require(:answer).permit(:body, :correct)
     end
 end
