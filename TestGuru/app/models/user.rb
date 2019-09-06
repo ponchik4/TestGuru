@@ -4,7 +4,7 @@ class User < ApplicationRecord
 
 #  include Auth
 
-  validates :email, :uniqueness => true
+  validates :email, :with => /@/, :uniqueness => true
 
   has_many :created_tests, class_name: 'Test', foreign_key: :user_id
   has_many :test_passages
