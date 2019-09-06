@@ -9,7 +9,8 @@ class ApplicationController < ActionController::Base
     unless current_user
       redirect_to login_path, alert: 'Are you a Guru? Verify your Email please'
     end
-    cookies[:email, :request] = current_user&.email
+    cookies[:email] = current_user&.email
+    session[:request_path] = request.path
   end
 
   def current_user

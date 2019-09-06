@@ -67,7 +67,7 @@ class TestPassagesController < ApplicationController
     end
 
     def find_user_passed_test
-      @user = TestPassage.user_id
+      @user = @current_user
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
