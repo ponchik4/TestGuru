@@ -66,10 +66,6 @@ class TestPassagesController < ApplicationController
       @test_passage = TestPassage.find(params[:id])
     end
 
-    def find_user_passed_test
-      @user = @current_user
-    end
-
     # Never trust parameters from the scary internet, only allow the white list through.
     def test_passage_params
       params.require(:test_passage).permit(:body)
