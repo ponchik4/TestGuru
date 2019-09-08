@@ -10,6 +10,11 @@
   </head>
 
   <body>
+    <% if logged_in? %>
+      <p class="nav user"><%= link_to 'Welcome', root_path %>, <b><%= current_user.email %></b> Guru
+      <%= link_to 'exit', sign_out_path %></p>
+    <% end %>
+
     <%= yield %>
 
     <%= render 'shared/footer' %>
