@@ -22,7 +22,7 @@ module User::Auth
     digest(password_string) == self.password_digest ? self : false
   end
 
-  def password=(password_string)
+  def password = (password_string)
     if password_string.nil?
       self.password_digest = nil
     elsif password_string.present?
