@@ -1,15 +1,15 @@
 class TestsController < ApplicationController
 
   before_action :authenticate_user!
-  before_action :set_test,  only: %i[show edit update destroy start]
+  before_action :set_test,  only: %i[start]
 
   def index
     @tests = Test.all
   end
 
   def start
-    @current_user
-    redirect_to @current_user.test_passage
+   current_user.tests(@test)
+   redirect_to current_user.test_passage(@test)
   end
 
   private

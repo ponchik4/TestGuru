@@ -2,10 +2,6 @@ class Admin::TestsController < Admin::BaseController
 
   before_action :set_test,  only: %i[show edit update destroy start]
 
-  def index
-    @tests = Test.all
-  end
-
   def new
     @test = Test.new
   end
@@ -36,22 +32,10 @@ class Admin::TestsController < Admin::BaseController
       end
   end
 
-  def show
-  end
-
-  def start
-    @current_user
-    redirect_to @current_user.test_passage
-  end
-
   private
 
   def set_test
     @test = Test.find(params[:id])
-  end
-
-  def set_user
-    @user = User.first
   end
 
   def test_params
