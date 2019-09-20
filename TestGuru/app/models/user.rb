@@ -21,6 +21,7 @@ class User < ApplicationRecord
   end
 
   def admin?
+    byebug
     is_a?(Admin)
   end
 end

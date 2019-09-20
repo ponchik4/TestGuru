@@ -2,6 +2,10 @@ class Admin::TestsController < Admin::BaseController
 
   before_action :set_test,  only: %i[show edit update destroy start]
 
+  def index
+    @tests = Test.all
+  end
+  
   def new
     @test = Test.new
   end
