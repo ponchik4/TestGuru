@@ -1,5 +1,5 @@
 ru:
-  helpers:  
+  helpers:
     submit:
       test:
         create: "Создать тест"
@@ -21,6 +21,10 @@ ru:
   tests:
     index:
       header: "Доступные тесты"
+      title: "Название"
+      level: "Уровень"
+      question: "Вопросы"
+      actions: "Действия"
 
   test_passages:
     result:
@@ -32,7 +36,11 @@ ru:
         auccess: "Тест успешно создан"
       index:
         header: "Доступные тесты"
+        title: "Название"
+        level: "Уровень"
+        question: "Вопросы"
+        actions: "Действия"
 
-   tests_mailer:
-     completed_test:
-       subject: "Вы завершили тест на TestGuru!"
+    tests_mailer:
+      completed_test:
+        subject: "Вы завершили тест на TestGuru!"
