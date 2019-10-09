@@ -40,6 +40,8 @@ ru:
         level: "Уровень"
         question: "Вопросы"
         actions: "Действия"
+      new:
+        header: "Создать новый тест"
 
     tests_mailer:
       completed_test:

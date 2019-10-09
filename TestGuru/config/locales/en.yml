@@ -32,6 +32,8 @@ en:
         success: "Test was successfully created."
       index:
         header: "Tricky Tests"
+      new:
+        header: "Create new Test"
 
   tests_mailer:
     completed_test:
