@@ -1,6 +1,6 @@
 class TestPassagesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_test_passage, :find_user_passed_test, only: [:show, :edit, :update, :destroy, :result]
+  before_action :set_test_passage, only: [:show, :edit, :update, :destroy, :result]
 
   # GET /test_passages
   # GET /test_passages.json
