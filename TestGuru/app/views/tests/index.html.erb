@@ -1,12 +1,13 @@
 <%= render 'shared/nav' %>
-<h1>Tricky Tests</h1>
+<h1><%= I18n.t('tests.index.header')%></h1>
 
 <table>
   <tr>
-    <th>Title</th>
-    <th>Level</th>
-    <th>Question</th>
-    <th>Actions</th>
+    <th><%= t('tests.index.title') %></th>
+    <th><%= t('tests.index.level') %></th>
+    <th><%= t('tests.index.question') %></th>
+    <th><%= t('tests.index.actions') %></th>
+
   </tr>
 
   <%= render @tests %>
