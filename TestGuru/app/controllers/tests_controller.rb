@@ -8,8 +8,10 @@ class TestsController < ApplicationController
   end
 
   def start
-   current_user.tests(@test)
-   redirect_to current_user.test_passage(@test)
+    #byebug
+    tp = TestPassage.create(test_id: @test.id, current_question_id: @test.questions.first, user_id: current_user.id)
+   #current_user.tests(@test)
+   redirect_to test_passage_path(tp)
   end
 
   private

@@ -5,9 +5,10 @@ class Admin::TestsController < Admin::BaseController
   def index
     @tests = Test.all
   end
-  
+
   def new
     @test = Test.new
+    render 'admin/tests/new'
   end
 
   def update
